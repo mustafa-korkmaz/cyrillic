@@ -14,9 +14,9 @@ import { FIREBASE_CONFIG } from './firebase.crendentials';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-  AngularFireDatabaseModule],
+    AngularFireDatabaseModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -24,4 +24,4 @@ import { FIREBASE_CONFIG } from './firebase.crendentials';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

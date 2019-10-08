@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { AlphabetService } from './alphabet.service';
 import { Alphabet } from './alphabet.model';
-import { IonicPage } from 'ionic-angular';
 import { AngularFireList } from 'angularfire2/database';
 
-@IonicPage()
 @Component({
   selector: 'app-alphabet',
   templateUrl: 'alphabet.page.html',
@@ -13,13 +11,26 @@ import { AngularFireList } from 'angularfire2/database';
 })
 export class AlphabetPage {
 
-  alphabetListRef$: AngularFireList<Alphabet[]>
-
-  constructor(private service: AlphabetService) {
-
+  alphabetList: Alphabet[] = [];
+  constructor(
+    private service: AlphabetService) {
+    this.setAlphabets();
   }
 
-  ionViewDidLoad() {
-  }
+  setAlphabets() {
+    this.service.setAlphabetList();
+    // this.service.getAlphabetList()
+    //   .valueChanges()
+    //   .subscribe(list => {
+    //     this.alphabetList = list;
+    //     console.log(this.alphabetList);
+    //   });
 
+
+
+    // const a = new Alphabet();
+    // a.char = 'Ee';
+    // a.type = 1;
+    // this.service.addAlphabet(a);
+  }
 }

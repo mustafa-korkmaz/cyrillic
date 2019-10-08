@@ -6,13 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
   <ion-list>
     <ion-list-header>
       Alphabets
     </ion-list-header>
-    <ion-item *ngFor="let item of alphabetListRef$ | async" (click)="selectShoppingItem(item)">
-      <h2>Item Name: {{item}}</h2>
+    <ion-item *ngFor="let item of alphabetList">
+      <h2>Item Name: {{item | json}}</h2>
     </ion-item>
   </ion-list>
 </ion-content>
