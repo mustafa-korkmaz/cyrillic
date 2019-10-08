@@ -16,7 +16,7 @@ export class AlphabetPage {
   alphabetListRef$: AngularFireList<Alphabet[]>
 
   constructor(private service: AlphabetService) {
-    
+
   }
 
   ionViewDidLoad() {
