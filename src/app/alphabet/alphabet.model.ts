@@ -1,11 +1,10 @@
 export class Alphabet {
-    key: string;
     type: number;
     char: string;
-    ref: LanRef;
+    refs: LanRef[];
 }
 
-export interface LanRef {
+export class LanRef {
     type: number;
     value: string;
 }
