@@ -18,7 +18,10 @@ export class AlphabetPage {
   }
 
   setAlphabets() {
-    this.service.setAlphabetList();
+    const self = this;
+    self.alphabetList = self.service.setAlphabetList();
+
+    console.log(self.alphabetList);
     // this.service.getAlphabetList()
     //   .valueChanges()
     //   .subscribe(list => {
@@ -26,11 +29,6 @@ export class AlphabetPage {
     //     console.log(this.alphabetList);
     //   });
 
-
-
-    // const a = new Alphabet();
-    // a.char = 'Ee';
-    // a.type = 1;
-    // this.service.addAlphabet(a);
+    this.service.addAlphabet(self.alphabetList[0]);
   }
 }

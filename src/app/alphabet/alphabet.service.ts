@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 import { Alphabet, LanRef } from './alphabet.model';
 
 @Injectable({
@@ -9,7 +11,7 @@ export class AlphabetService {
 
   private alphabetListRef = this.firebaseDb.list<Alphabet>('alphabet-list');
 
-  constructor(private firebaseDb: AngularFireDatabase) { }
+  constructor(private firebaseDb: AngularFireDatabase, private db: AngularFirestore) { }
 
   getAlphabetList() {
     return this.alphabetListRef;
@@ -19,13 +21,9 @@ export class AlphabetService {
     return this.alphabetListRef.push(item);
   }
 
-  setAlphabetList() {
-    // const en = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-    //   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  setAlphabetList(): Alphabet[] {
 
-    // const tr = ['A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'H', 'I', 'İ', 'J', 'K', 'L', 'M',
-    //   'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'Ş', 'Ü', 'Y', 'Z'];
-
+    const self = this;
     const bu = [['A', 'A', 'A'], ['Б', 'B', 'B'], ['B', 'V', 'V'], ['C', 'S', 'S'], ['Ч', 'CH', 'Ç'],
     ['E', 'E', 'E'], ['Ф', 'F', 'F'], ['Г', 'G', 'G'], ['H', 'N', 'N'], ['Ъ', 'E', 'I'], ['Ж', 'ZH', 'J'], ['K', 'K', 'K'], ['Л', 'L', 'L'],
     ['M', 'M', 'M'], ['И', 'I', 'İ'], ['O', 'O', 'O'], ['P', 'R', 'R'], ['П', 'P', 'P'],
@@ -34,30 +32,15 @@ export class AlphabetService {
 
     const allAlphabets: Alphabet[] = [];
 
-    // for (let i = 0; i <= en.length - 1; i++) {
-    //   const a = new Alphabet();
-    //   a.char = en[i] + en[i].toLowerCase();
-    //   a.type = 0;
-    //   a.key = en[i];
-    //   a.ref = null;
-    //   allAlphabets.push(a);
-    // }
-
-    // for (let i = 0; i <= tr.length - 1; i++) {
-    //   const a = new Alphabet();
-    //   a.char = tr[i] + tr[i].toLowerCase();
-    //   a.type = 1;
-    //   a.key = tr[i];
-    //   a.ref = null;
-    //   allAlphabets.push(a);
-    // }
-
     for (let i = 0; i <= bu.length - 1; i++) {
       const a = new Alphabet();
       a.char = bu[i][0] + bu[i][0].toLowerCase();
       a.type = 2;
 
       a.refs = [];
+
+      a.refs[0] = new LanRef();
+      a.refs[1] = new LanRef();
 
       a.refs[0].type = 0;
       a.refs[0].value = bu[i][0];
@@ -66,5 +49,7 @@ export class AlphabetService {
 
       allAlphabets.push(a);
     }
+
+    return allAlphabets;
   }
 }
