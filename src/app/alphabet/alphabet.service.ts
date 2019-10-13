@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Alphabet, LanRef } from './alphabet.model';
 
@@ -21,7 +21,7 @@ export class AlphabetService {
     return this.alphabetListRef.push(item);
   }
 
-  setAlphabetList(): Alphabet[] {
+  setAlphabetList() {
 
     const self = this;
     const bu = [['A', 'A', 'A'], ['Б', 'B', 'B'], ['B', 'V', 'V'], ['C', 'S', 'S'], ['Ч', 'CH', 'Ç'],
@@ -43,13 +43,16 @@ export class AlphabetService {
       a.refs[1] = new LanRef();
 
       a.refs[0].type = 0;
-      a.refs[0].value = bu[i][0];
+      a.refs[0].value = bu[i][1];
       a.refs[1].type = 1;
-      a.refs[1].value = bu[i][1];
+      a.refs[1].value = bu[i][2];
 
       allAlphabets.push(a);
     }
 
-    return allAlphabets;
+    allAlphabets.forEach(async a => {
+      await self.addAlphabet(a);
+    });
   }
+
 }

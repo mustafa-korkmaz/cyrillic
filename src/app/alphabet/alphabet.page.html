@@ -8,11 +8,10 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-list-header>
-      Alphabets
-    </ion-list-header>
     <ion-item *ngFor="let item of alphabetList">
-      <h2>Item Name: {{item | json}}</h2>
+      <h2 slot="start" style="width: 30%;">{{item.char}}</h2>
+      <p> EN: {{item.refs[0].value}}</p>
+      <p slot="end">TR: {{item.refs[1].value}}</p>
     </ion-item>
   </ion-list>
 </ion-content>

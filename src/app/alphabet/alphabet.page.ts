@@ -18,17 +18,10 @@ export class AlphabetPage {
   }
 
   setAlphabets() {
-    const self = this;
-    self.alphabetList = self.service.setAlphabetList();
-
-    console.log(self.alphabetList);
-    // this.service.getAlphabetList()
-    //   .valueChanges()
-    //   .subscribe(list => {
-    //     this.alphabetList = list;
-    //     console.log(this.alphabetList);
-    //   });
-
-    this.service.addAlphabet(self.alphabetList[0]);
+    this.service.getAlphabetList()
+      .valueChanges()
+      .subscribe(list => {
+        this.alphabetList = list;
+      });
   }
 }
