@@ -28,7 +28,7 @@ export class AlphabetService {
     ['E', 'E', 'E'], ['Ф', 'F', 'F'], ['Г', 'G', 'G'], ['H', 'N', 'N'], ['Ъ', 'E', 'I'], ['Ж', 'ZH', 'J'], ['K', 'K', 'K'], ['Л', 'L', 'L'],
     ['M', 'M', 'M'], ['И', 'I', 'İ'], ['O', 'O', 'O'], ['P', 'R', 'R'], ['П', 'P', 'P'],
     ['Ш', 'SH', 'Ş'], ['Щ', 'SHT', 'ŞT'], ['T', 'T', 'T'], ['Ц', 'TS', 'TS'], ['Ю', 'YU', 'YU'], ['Y', 'U', 'U'],
-    ['Я', 'YA', 'YA'], ['X', 'H', 'H'], ['З', 'Z', 'Z'], ['Й', 'Y', 'Y']];
+    ['Я', 'YA', 'YA'], ['X', 'H', 'H'], ['З', 'Z', 'Z'], ['Й', 'Y', 'Y'], ['Д', 'D', 'D']];
 
     const allAlphabets: Alphabet[] = [];
 
@@ -50,7 +50,11 @@ export class AlphabetService {
       allAlphabets.push(a);
     }
 
-    allAlphabets.forEach(async a => {
+    const sorted = allAlphabets.sort((a, b) => {
+      return a.char > b.char ? 1 : -1;
+    });
+
+    sorted.forEach(async a => {
       await self.addAlphabet(a);
     });
   }
