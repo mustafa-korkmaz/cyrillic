@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AlphabetService } from './alphabet.service';
 import { Alphabet } from './alphabet.model';
-import { AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-alphabet',
