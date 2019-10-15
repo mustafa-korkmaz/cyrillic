@@ -5,13 +5,16 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-searchbar
+  [(ngModel)]="searchText"
+  (ionChange)="onInputChange($event)">
+</ion-searchbar>
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-item *ngFor="let item of alphabetList">
+    <ion-item *ngFor="let item of filteredAlphabetList">
       <h2 slot="start" style="width: 30%;">{{item.char}}</h2>
       <p> EN: {{item.refs[0].value}}</p>
       <p slot="end">TR: {{item.refs[1].value}}</p>
     </ion-item>
   </ion-list>
-</ion-content>
+</ion-content>  

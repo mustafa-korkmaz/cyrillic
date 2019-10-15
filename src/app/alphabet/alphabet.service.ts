@@ -24,17 +24,18 @@ export class AlphabetService {
   setAlphabetList() {
 
     const self = this;
-    const bu = [['A', 'A', 'A'], ['Б', 'B', 'B'], ['B', 'V', 'V'], ['C', 'S', 'S'], ['Ч', 'CH', 'Ç'],
-    ['E', 'E', 'E'], ['Ф', 'F', 'F'], ['Г', 'G', 'G'], ['H', 'N', 'N'], ['Ъ', 'E', 'I'], ['Ж', 'ZH', 'J'], ['K', 'K', 'K'], ['Л', 'L', 'L'],
-    ['M', 'M', 'M'], ['И', 'I', 'İ'], ['O', 'O', 'O'], ['P', 'R', 'R'], ['П', 'P', 'P'],
+    const cyrillic = [['A', 'A', 'A'], ['Б', 'B', 'B'], ['B', 'V', 'V'], ['C', 'C', 'S'], ['Ч', 'CH', 'Ç'], ['ДЖ', 'DZH', 'C'],
+    ['E', 'E', 'E'], ['Ф', 'F', 'F'], ['Г', 'G', 'G'], ['H', 'N', 'N'], ['Ж', 'ZH', 'J'], ['K', 'K', 'K'], ['Л', 'L', 'L'],
+    ['M', 'M', 'M'], ['И', 'I', 'I'], ['O', 'O', 'O'], ['P', 'R', 'R'], ['П', 'P', 'P'],
     ['Ш', 'SH', 'Ş'], ['Щ', 'SHT', 'ŞT'], ['T', 'T', 'T'], ['Ц', 'TS', 'TS'], ['Ю', 'YU', 'YU'], ['Y', 'U', 'U'],
-    ['Я', 'YA', 'YA'], ['X', 'H', 'H'], ['З', 'Z', 'Z'], ['Й', 'Y', 'Y'], ['Д', 'D', 'D']];
+    ['Я', 'YA', 'YA'], ['X', 'H', 'H'], ['З', 'Z', 'Z'], ['Й', 'Y', 'Y'], ['Д', 'D', 'D'], [' ', ' ', ' ']];
 
+    // ['Ъ', 'I', 'I'],
     const allAlphabets: Alphabet[] = [];
 
-    for (let i = 0; i <= bu.length - 1; i++) {
+    for (let i = 0; i <= cyrillic.length - 1; i++) {
       const a = new Alphabet();
-      a.char = bu[i][0] + bu[i][0].toLowerCase();
+      a.char = cyrillic[i][0] + cyrillic[i][0].toLowerCase();
       a.type = 2;
 
       a.refs = [];
@@ -43,9 +44,9 @@ export class AlphabetService {
       a.refs[1] = new LanRef();
 
       a.refs[0].type = 0;
-      a.refs[0].value = bu[i][1];
+      a.refs[0].value = cyrillic[i][1];
       a.refs[1].type = 1;
-      a.refs[1].value = bu[i][2];
+      a.refs[1].value = cyrillic[i][2];
 
       allAlphabets.push(a);
     }
