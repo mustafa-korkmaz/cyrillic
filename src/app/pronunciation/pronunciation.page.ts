@@ -114,7 +114,7 @@ export class PronunciationPage {
   getCyrillicChar(refValue: string): string {
 
     const lan = +this.selectedLanguage;
-    const alphabet = this.alphabetList.find(p => p.refs[lan].value.toLowerCase() === refValue);
+    const alphabet = this.alphabetList.find(p => p.refs[lan].value.toLowerCase() === refValue.toLowerCase());
 
     if (alphabet) {
       if (alphabet.char.length < 3) {
